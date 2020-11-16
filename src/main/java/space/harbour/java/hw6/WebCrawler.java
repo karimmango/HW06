@@ -30,7 +30,7 @@ public class WebCrawler {
                 while ((inputLine = br.readLine()) != null) {
                     content.append(inputLine);
                 }
-                } catch (IOException e) {
+            } catch (IOException e) {
                 System.out.println("Failed to retrieve content of " + url.toString());
                 e.printStackTrace();
             }
