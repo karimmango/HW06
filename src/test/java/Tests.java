@@ -1,7 +1,3 @@
-import junit.framework.TestCase;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -9,6 +5,9 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
 import space.harbour.java.hw6.WebCrawler;
 
 public class Tests {
