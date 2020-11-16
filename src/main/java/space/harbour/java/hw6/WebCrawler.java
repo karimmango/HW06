@@ -9,9 +9,9 @@ import java.net.URL;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicReference;
 
@@ -24,15 +24,14 @@ public class WebCrawler {
             final StringBuilder content = new StringBuilder();
 
             try (InputStream is = url.openConnection().getInputStream();
-                 InputStreamReader in = new InputStreamReader(is, "UTF-8");
-                 BufferedReader br = new BufferedReader(in);)
+                    InputStreamReader in = new InputStreamReader(is, "UTF-8");
+                    BufferedReader br = new BufferedReader(in);)
                 {
                 String inputLine;
                 while ((inputLine = br.readLine()) != null) {
                     content.append(inputLine);
                 }
-            }
-            catch (IOException e) {
+                } catch (IOException e) {
                 System.out.println("Failed to retrieve content of " + url.toString());
                 e.printStackTrace();
             }
@@ -62,8 +61,7 @@ public class WebCrawler {
                     URL url22 = new URL(word);
                     urls[ct] = url22;
                     ct++;
-                }
-                catch (MalformedURLException e) {
+                } catch (MalformedURLException e) {
                     e.printStackTrace();
                 }
             }
@@ -99,7 +97,8 @@ public class WebCrawler {
         }
     }
 
-    public static void main(String[] args) throws MalformedURLException, ExecutionException, InterruptedException {
+    public static void main(String[] args) throws MalformedURLException,
+            ExecutionException, InterruptedException {
         ExecutorService table = Executors.newFixedThreadPool(8);
         Future<CopyOnWriteArraySet> future = null;
         int numOfUrls = 0;
