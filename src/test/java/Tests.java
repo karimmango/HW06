@@ -6,7 +6,11 @@ import space.harbour.java.hw6.WebCrawler;
 
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.*;
+import java.util.concurrent.CopyOnWriteArraySet;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
 
 public class Tests {
     private WebCrawler crawler = new WebCrawler();
@@ -32,11 +36,9 @@ public class Tests {
             }
             table.shutdown();
             System.out.println("number of urls is : " + numOfUrls);
-        }
-        catch (InterruptedException | ExecutionException ex) {
+        } catch (InterruptedException | ExecutionException ex) {
             ex.printStackTrace();
-        }
-        catch (MalformedURLException ex) {
+        } catch (MalformedURLException ex) {
             ex.printStackTrace();
         }
         Assert.assertEquals(4, crawler.alreadyVisited.size());
@@ -56,13 +58,9 @@ public class Tests {
                 System.out.println("get : " + future.get());
             }
             table.shutdown();
-        }
-        catch (InterruptedException | ExecutionException ex)
-        {
+        } catch (InterruptedException | ExecutionException ex) {
             ex.printStackTrace();
-        }
-        catch (MalformedURLException ex)
-        {
+        } catch (MalformedURLException ex) {
             ex.printStackTrace();
         }
         Assert.assertEquals(0, crawler.toVisit.size());
@@ -84,9 +82,7 @@ public class Tests {
                 res = (future.get().toString());
             }
             table.shutdown();
-        }
-        catch (MalformedURLException ex)
-        {
+        } catch (MalformedURLException ex) {
             ex.printStackTrace();
         }
         Assert.assertEquals(futureSet, res);
