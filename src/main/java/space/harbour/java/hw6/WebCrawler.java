@@ -98,10 +98,10 @@ public class WebCrawler {
 
     public static void main(String[] args) throws MalformedURLException,
             ExecutionException, InterruptedException {
-        ExecutorService table = Executors.newFixedThreadPool(8);
+        ExecutorService table = Executors.newFixedThreadPool(4);
         Future<CopyOnWriteArraySet> future = null;
         int numOfUrls = 0;
-        toVisit.add(new URL("https://vasart.github.io/supreme-potato/index.html"));
+        toVisit.add(new URL("https://karimmango.github.io/HW06/site/index.html"));
         while (!toVisit.isEmpty()) {
             future = table.submit(new WebCrawler.UrlVisitor());
             System.out.println("get : " + future.get());

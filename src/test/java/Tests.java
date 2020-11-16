@@ -21,12 +21,12 @@ public class Tests {
     @Test
     public void alreadyVisitedSize() throws MalformedURLException {
         WebCrawler crawler = new WebCrawler();
-        ExecutorService table = Executors.newFixedThreadPool(5);
+        ExecutorService table = Executors.newFixedThreadPool(4);
         Future<CopyOnWriteArraySet> future = null;
         int numOfUrls = 0;
 
         try {
-            crawler.toVisit.add(new URL("https://vasart.github.io/supreme-potato/index.html"));
+            crawler.toVisit.add(new URL("https://karimmango.github.io/HW06/site/index.html"));
             while (!crawler.toVisit.isEmpty()) {
                 future = table.submit(new WebCrawler.UrlVisitor());
                 System.out.println("get : " + future.get());
@@ -39,17 +39,17 @@ public class Tests {
         } catch (MalformedURLException ex) {
             ex.printStackTrace();
         }
-        Assert.assertEquals(4, crawler.alreadyVisited.size());
-        Assert.assertEquals(4, numOfUrls);
+        Assert.assertEquals(6, crawler.alreadyVisited.size());
+        Assert.assertEquals(6, numOfUrls);
     }
 
     @Test
     public void emptyToVisit() {
         WebCrawler crawler = new WebCrawler();
-        ExecutorService table = Executors.newFixedThreadPool(8);
+        ExecutorService table = Executors.newFixedThreadPool(4);
         Future<CopyOnWriteArraySet> future = null;
         try {
-            crawler.toVisit.add(new URL("https://vasart.github.io/supreme-potato/index.html"));
+            crawler.toVisit.add(new URL("https://karimmango.github.io/HW06/site/index.html"));
             while (!crawler.toVisit.isEmpty()) {
                 future = table.submit(new WebCrawler.UrlVisitor());
                 System.out.println("get : " + future.get());
@@ -67,14 +67,16 @@ public class Tests {
     @Test
     public void futuresTest() throws ExecutionException, InterruptedException {
         WebCrawler crawler = new WebCrawler();
-        ExecutorService table = Executors.newFixedThreadPool(8);
+        ExecutorService table = Executors.newFixedThreadPool(4);
         Future<CopyOnWriteArraySet> future = null;
-        String futureSet = "[https://vasart.github.io/supreme-potato/index.html, https://vasart.github.io/supreme-potato/experience.html, "
+        String futureSet = "[https://karimmango.github.io/HW06/site/index.html, https://karimmango.github.io/HW06/site/work.html,"
                 +
-                "https://vasart.github.io/supreme-potato/education.html, https://vasart.github.io/supreme-potato/social.html]";
+                " https://karimmango.github.io/HW06/site/academics.html, https://karimmango.github.io/HW06/site/hobbies.html, "
+                +
+                "https://karimmango.github.io/HW06/site/personal.html, https://karimmango.github.io/HW06/site/sports.html]";
         String res = null;
         try {
-            crawler.toVisit.add(new URL("https://vasart.github.io/supreme-potato/index.html"));
+            crawler.toVisit.add(new URL("https://karimmango.github.io/HW06/site/index.html"));
             while (!crawler.toVisit.isEmpty()) {
                 future = table.submit(new WebCrawler.UrlVisitor());
                 res = (future.get().toString());
