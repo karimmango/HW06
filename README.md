@@ -1,5 +1,5 @@
-# HW-02
+# HW-06
 
-Author: Student Name
+Author: Karim Mango
 
-![HW-02](https://github.com/vasart/potential-happiness/workflows/HW-02/badge.svg)
+![HW-06](https://github.com/karimmango/HW06/workflows/HW-06/badge.svg)
