@@ -9,8 +9,8 @@ import java.net.URL;
 import java.util.concurrent.Callable;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.CopyOnWriteArraySet;
-import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.atomic.AtomicReference;
@@ -25,8 +25,7 @@ public class WebCrawler {
 
             try (InputStream is = url.openConnection().getInputStream();
                     InputStreamReader in = new InputStreamReader(is, "UTF-8");
-                    BufferedReader br = new BufferedReader(in);)
-                {
+                    BufferedReader br = new BufferedReader(in);) {
                 String inputLine;
                 while ((inputLine = br.readLine()) != null) {
                     content.append(inputLine);
