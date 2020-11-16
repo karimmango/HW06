@@ -2,8 +2,6 @@ import junit.framework.TestCase;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import space.harbour.java.hw6.WebCrawler;
-
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.CopyOnWriteArraySet;
@@ -11,6 +9,7 @@ import java.util.concurrent.ExecutionException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
+import space.harbour.java.hw6.WebCrawler;
 
 public class Tests {
     private WebCrawler crawler = new WebCrawler();
@@ -50,8 +49,7 @@ public class Tests {
         WebCrawler crawler = new WebCrawler();
         ExecutorService table = Executors.newFixedThreadPool(8);
         Future<CopyOnWriteArraySet> future = null;
-        try
-        {
+        try {
             crawler.toVisit.add(new URL("https://vasart.github.io/supreme-potato/index.html"));
             while (!crawler.toVisit.isEmpty()) {
                 future = table.submit(new WebCrawler.UrlVisitor());
@@ -72,7 +70,8 @@ public class Tests {
         WebCrawler crawler = new WebCrawler();
         ExecutorService table = Executors.newFixedThreadPool(8);
         Future<CopyOnWriteArraySet> future = null;
-        String futureSet = "[https://vasart.github.io/supreme-potato/index.html, https://vasart.github.io/supreme-potato/experience.html, " +
+        String futureSet = "[https://vasart.github.io/supreme-potato/index.html, https://vasart.github.io/supreme-potato/experience.html, "
+                +
                 "https://vasart.github.io/supreme-potato/education.html, https://vasart.github.io/supreme-potato/social.html]";
         String res = null;
         try {
